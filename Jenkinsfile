@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
-                sh 'npm install'
+                sh 'cd node-app && npm install'
                 sh 'npm run build'
             }
             post {
