@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
-                sh 'cd node-app && npm install'
-                sh 'cd node-app && npm run build'
+                sh 'npm install'
+                sh 'npm run build'
             }
             post {
                 success {
@@ -20,17 +20,17 @@ pipeline {
             parallel {
                 stage('Unit') {
                     steps {
-                        sh 'cd node-app && npm test'
+                        sh 'npm test'
                     }
                 }
                 stage('Lint') {
                     steps {
-                        sh 'cd node-app && npm run lint'
+                        sh 'npm run lint'
                     }
                 }
                 stage('Integration') {
                     steps {
-                        sh 'cd node-app && npm run integration-tests'
+                        sh 'npm run integration-tests'
                     }
                 }
             }
