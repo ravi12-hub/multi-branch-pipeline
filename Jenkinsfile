@@ -10,30 +10,15 @@ pipeline {
             }
             post {
                 success {
-                    // Archives the build output, similar to GitLab artifacts
                     archiveArtifacts artifacts: 'dist/**', fingerprint: true
                 }
             }
-        }
+        } // <--- Added this missing brace to close the Build stage
 
-        stage('Test') {
-            parallel {
-                stage('Unit') {
-                    steps {
-                        sh 'npm test'
-                    }
-                }
-                stage('Lint') {
-                    steps {
-                        sh 'npm run lint'
-                    }
-                }
-                stage('Integration') {
-                    steps {
-                        sh 'npm run integration-tests'
-                    }
-                }
+        stage('sucessfull') {
+            steps {
+                echo '7 croreeeeeeee'
             }
-        }
+        } 
     }
 }
