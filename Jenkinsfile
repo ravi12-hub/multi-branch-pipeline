@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs "NodeJS 25"
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -13,7 +17,7 @@ pipeline {
                     archiveArtifacts artifacts: 'dist/**', fingerprint: true
                 }
             }
-        } // <--- Added this missing brace to close the Build stage
+        }
 
         stage('sucessfull') {
             steps {
